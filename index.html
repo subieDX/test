@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>単語学習サイト</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+
+  <main class="shell">
+    <header class="hero">
+      <div class="eyebrow">word trainer</div>
+      <h1>日本語の横に英語を並べて、<br>四角いカバーを下へ送る学習サイト</h1>
+      <p class="lead">
+        単語を縦に追加して、英語だけを四角で隠します。クリックするたびにカバーが一行下へ移動するので、
+        1語ずつテンポよく覚えられます。
+      </p>
+
+      <div class="stats" aria-label="学習状況">
+        <div class="stat">
+          <span class="stat-label">登録数</span>
+          <strong id="word-count">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">今の位置</span>
+          <strong id="progress-text">0 / 0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">表示状態</span>
+          <strong id="status-text">待機中</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="layout">
+      <section class="panel entry-panel">
+        <div class="panel-head">
+          <h2>単語を追加</h2>
+          <p>1件ずつでも、まとめてでも入れられます。</p>
+        </div>
+
+        <form id="single-form" class="stack">
+          <label class="field">
+            <span>日本語</span>
+            <input id="jp-input" type="text" placeholder="りんご" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>英語</span>
+            <input id="en-input" type="text" placeholder="apple" autocomplete="off">
+          </label>
+          <button class="primary" type="submit">追加する</button>
+        </form>
+
+        <div class="divider"></div>
+
+        <label class="field">
+          <span>まとめて追加</span>
+          <textarea id="bulk-input" placeholder="りんご, apple&#10;勉強 / study&#10;学校	 school"></textarea>
+        </label>
+        <div class="inline-actions">
+          <button id="bulk-add" class="secondary" type="button">まとめて追加</button>
+          <button id="shuffle-btn" class="secondary" type="button">順番を入れ替え</button>
+        </div>
+
+        <div class="inline-actions">
+          <button id="reset-btn" class="ghost" type="button">最初からやり直す</button>
+        </div>
+
+        <p class="note">
+          クリック操作に加えて、スペースキーや Enter キーでも次へ進めます。
+        </p>
+      </section>
+
+      <section class="panel study-panel">
+        <div class="panel-head">
+          <h2>学習リスト</h2>
+          <p>英語は四角で隠れていて、押すと次の行へ移動します。</p>
+        </div>
+
+        <div id="study-list" class="study-list" aria-live="polite">
+          <div id="empty-state" class="empty-state">
+            まだ単語がありません。左側から追加してください。
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
